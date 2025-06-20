@@ -226,8 +226,3 @@ gradle-app.setting
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/java,gradle,node,macos
-
-# Custom Ignore Rules
-# Ignore application config files containing sensitive info
-**/application.properties
-**/application.yml
