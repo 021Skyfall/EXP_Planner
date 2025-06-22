@@ -8,7 +8,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "expenses")
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class Expense {
 
     // 변수 타입은 전부 래퍼 타입 => null 처리
