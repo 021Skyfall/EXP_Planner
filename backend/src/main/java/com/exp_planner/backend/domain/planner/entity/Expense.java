@@ -8,6 +8,8 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "expenses")
 @Getter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class Expense {
 

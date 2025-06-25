@@ -2,6 +2,7 @@ package com.exp_planner.backend.domain.planner.controller;
 
 import com.exp_planner.backend.domain.planner.dto.ExpenseDto;
 import com.exp_planner.backend.domain.planner.entity.Expense;
+import com.exp_planner.backend.domain.planner.mapper.ExpenseMapper;
 import com.exp_planner.backend.domain.planner.service.ExpenseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,9 +18,10 @@ import java.net.URI;
 @Slf4j
 public class ExpenseController {
     private final ExpenseService service;
+    private final ExpenseMapper mapper;
 
     @PostMapping("/post")
-    public ResponseEntity<Void> postExpense(@RequestBody ExpenseDto.Post postDto) {
+    public ResponseEntity<ExpenseDto.Response> postExpense(@RequestBody ExpenseDto.Post postDto) {
         Expense savedExpense = service.createExpense(postDto);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -27,6 +29,6 @@ public class ExpenseController {
                 .buildAndExpand(savedExpense.getId())
                 .toUri();
 
-        return ResponseEntity.created(location).build();
+        return ResponseEntity.created(location).body(mapper.expenseToExpenseResponseDto(savedExpense));
     }
 }

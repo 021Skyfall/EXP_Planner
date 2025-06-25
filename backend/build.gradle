@@ -52,6 +52,8 @@ dependencies {
 	// test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testImplementation 'org.jetbrains.kotlin:kotlin-test:2.0.0'
+	testImplementation 'org.mockito.kotlin:mockito-kotlin:5.4.0'
 }
 
 tasks.named('test') {
