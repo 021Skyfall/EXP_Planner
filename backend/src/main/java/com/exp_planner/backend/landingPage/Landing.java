@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/exp")
 public class Landing {
 
     @GetMapping("/landing")
     public String landing() {
-        return "Hello from Spring Boot Backend! \nThis is the landing page of the backend.";
+        return "Hello from Spring Boot Backend!" + '\n' + "This is the landing page of the backend.";
     }
 }
