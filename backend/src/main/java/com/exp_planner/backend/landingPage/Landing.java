@@ -1,4 +1,4 @@
-package com.exp_planner.backend;
+package com.exp_planner.backend.landingPage;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
