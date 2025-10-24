@@ -1,5 +1,4 @@
-/* App Container */
-.app-container {
+.home-page {
   min-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 0;
@@ -7,38 +6,35 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Header */
-.app-header {
+.hero-section {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  padding: 2rem;
+  padding: 4rem 2rem;
   text-align: center;
   color: white;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.app-header h1 {
-  font-size: 3rem;
+.hero-section h1 {
+  font-size: 4rem;
   margin: 0;
   font-weight: 700;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.app-subtitle {
-  font-size: 1.2rem;
-  margin: 0.5rem 0 0 0;
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin: 1rem 0 0 0;
   opacity: 0.9;
   font-weight: 300;
 }
 
-/* Main Content */
-.app-main {
+.content-section {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
 }
 
-/* Status Card */
 .status-card {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 16px;
@@ -82,10 +78,9 @@
   white-space: pre-line;
 }
 
-/* Features Grid */
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
 }
@@ -116,13 +111,16 @@
   line-height: 1.5;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
-  .app-header h1 {
-    font-size: 2rem;
+  .hero-section h1 {
+    font-size: 2.5rem;
   }
   
-  .app-main {
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .content-section {
     padding: 1rem;
   }
   
