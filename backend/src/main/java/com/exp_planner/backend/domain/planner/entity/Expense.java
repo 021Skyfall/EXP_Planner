@@ -23,7 +23,7 @@ public class Expense {
     private String gameName;
 
     @Column(nullable = false, length = 50)
-    private String gameType; // 모바일 or 콘솔 or pc
+    private String gamePlatform; // 모바일 or 콘솔 or pc
 
     @Column(nullable = false)
     private Integer amount;
@@ -35,7 +35,7 @@ public class Expense {
     private String paymentMethod;
 
     @Column(nullable = false, length = 50)
-    private String marketType; // 삼성스토어 or 원스토어 or 구플 or etc
+    private String marketType; // 갤스 or 원스 or 구플 or etc
 
     @Column(columnDefinition = "TEXT")
     private String description; // 메모

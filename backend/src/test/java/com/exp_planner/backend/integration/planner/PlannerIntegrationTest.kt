@@ -44,7 +44,7 @@ class PlannerIntegrationTest {
         // given
         val postRequest = ExpenseDto.Post(
             gameName = "명조",
-            gameType = "모바일",
+            gamePlatform = "모바일",
             amount = 119000,
             paymentDate = LocalDate.of(2025, 6, 25),
             paymentMethod = "컬쳐랜드",
@@ -71,7 +71,7 @@ class PlannerIntegrationTest {
         assertThat(allExpenses).hasSize(1)
         val savedExpense = allExpenses[0]
         assertThat(savedExpense.gameName).isEqualTo("명조")
-        assertThat(savedExpense.gameType).isEqualTo("모바일")
+        assertThat(savedExpense.gamePlatform).isEqualTo("모바일")
         assertThat(savedExpense.amount).isEqualTo(119000)
         assertThat(savedExpense.paymentDate).isEqualTo(LocalDate.of(2025, 6, 25))
         assertThat(savedExpense.paymentMethod).isEqualTo("컬쳐랜드")
