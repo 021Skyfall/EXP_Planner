@@ -17,7 +17,7 @@ export const expenseService = {
   // 지출 목록 조회 (추후 구현)
   getExpenses: async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/expenses`);
+      const response = await axios.get(`${API_BASE_URL}/expenses/getAll`);
       return response.data;
     } catch (error) {
       console.error('지출 목록 조회 실패:', error);

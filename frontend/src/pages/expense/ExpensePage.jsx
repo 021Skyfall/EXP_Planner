@@ -1,13 +1,58 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ExpenseForm from '../../components/expense/ExpenseForm';
+import { expenseService } from '../../services/expenseService';
 import './ExpensePage.css';
 
 const ExpensePage = () => {
   const [expenses, setExpenses] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
+  const [error, setError] = useState(null); //에러 상태 추가
+
+  // [데이터 조회 로직] useEffect를 사용하여 컴포넌트 마운트 시 데이터 가져오기
+  useEffect(() => {
+    const fetchExpenses = async () => {
+      try {
+        setError(null);
+        setIsLoading(true);
+        // 서버의 GET /expense/get 엔드포인트에 요청
+        const data = await expenseService.getExpenses(); 
+        
+        // 🚨 중요: 서버에서 받아온 데이터 구조가 List<ExpenseDto.Response>라고 가정합니다.
+        setExpenses(data); 
+
+      } catch (err) {
+        console.error("지출 목록 조회 실패:", err);
+        setError("지출 목록을 불러오지 못했습니다. 서버 상태를 확인해주세요.");
+        setExpenses([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchExpenses();
+  }, []); // 빈 배열: 컴포넌트가 처음 마운트될 때 딱 한 번만 실행
 
   const handleExpenseAdded = (newExpense) => {
+    // 새 지출이 등록되면 목록의 맨 앞에 추가
     setExpenses(prev => [newExpense, ...prev]);
   };
+
+    // [로딩 및 에러 처리]
+    if (isLoading) {
+      return (
+        <div className="expense-page loading-state">
+          <p>지출 내역을 불러오는 중...</p>
+        </div>
+      );
+    }
+  
+    if (error) {
+      return (
+        <div className="expense-page error-state">
+          <p>⚠️ 오류 발생: {error}</p>
+        </div>
+      );
+    }
 
   return (
     <div className="expense-page">
@@ -36,7 +81,7 @@ const ExpensePage = () => {
                   
                   {/* 게임 이름 및 플랫폼 */}
                   <div className="expense-game-details">
-                      {expense.gameName} ({expense.gameType})
+                      {expense.gameName} ({expense.gamePlatform})
                   </div>
                   
                    {/* 마켓과 결제 방법 */}

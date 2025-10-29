@@ -23,7 +23,7 @@ const parseAmount = (formattedAmount) => {
 const ExpenseForm = ({ onExpenseAdded }) => {
   const [formData, setFormData] = useState({
     gameName: '',
-    gameType: '',
+    gamePlatform: '',
     amount: 0,
     paymentDate: new Date().toISOString().split('T')[0],
     paymentMethod: '',
@@ -66,7 +66,7 @@ const ExpenseForm = ({ onExpenseAdded }) => {
     setMessage('');
 
         // 유효성 검사 (필수 필드)
-    if (!formData.gameName || !formData.gameType || !formData.paymentDate || !formData.marketType || formData.amount <= 0) {
+    if (!formData.gameName || !formData.gamePlatform || !formData.paymentDate || !formData.marketType || formData.amount <= 0) {
         setMessage('필수 항목(*)을 모두 입력하고 금액을 0보다 크게 입력해주세요.');
         setLoading(false);
         return;
@@ -77,7 +77,7 @@ const ExpenseForm = ({ onExpenseAdded }) => {
       setMessage('지출이 성공적으로 등록되었습니다!');
       setFormData({
         gameName: '',
-        gameType: '',
+        gamePlatform: '',
         paymentDate: new Date().toISOString().split('T')[0],
         paymentMethod: '',
         amount: 0,
@@ -112,12 +112,12 @@ const ExpenseForm = ({ onExpenseAdded }) => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="gameType">게임 플랫폼 *</label>
+          <label htmlFor="gamePlatform">게임 플랫폼 *</label>
           <div className="select-wrapper">
           <select
-            id="gameType"
-            name="gameType"
-            value={formData.gameType}
+            id="gamePlatform"
+            name="gamePlatform"
+            value={formData.gamePlatform}
             onChange={handleChange}
           >
             <option value="">게임 플랫폼을 선택하세요</option>
